@@ -10,7 +10,6 @@ router.post("/registro", async (req, res) => {
     //const { username, password } = req.body;
     const username = req.body.email;
     const password = req.body.password;
-    const passwordss = req.body.password;
 
     const rows = await pool.query("SELECT * FROM usuarios WHERE username = ?", [
       username,
@@ -24,8 +23,10 @@ router.post("/registro", async (req, res) => {
       const result = await pool.query("INSERT INTO usuarios SET ? ", newUser);
       console.log(result.insertId);
       const token = jwt.sign({ _id: result.insertId }, "secretkey");
+      const role = "0";
+      const displayName = username;
 
-      return res.status(200).json({ token });
+      return res.status(200).json({ token, role, displayName });
     } else {
       return res.status(401).send("El Usuario ya existe");
     }

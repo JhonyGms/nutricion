@@ -39,9 +39,15 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ): Promise<boolean> {
     const currentUser = await this.authService.getUser();
     console.log(currentUser);
+    console.log(route);
     if (currentUser) {
       if (route.data && route.data.roles) {
-        if (route.data.roles.includes(currentUser.role)) {
+        if (
+          currentUser.role == '0' ||
+          currentUser.role == '1' ||
+          currentUser.role == '2'
+        ) {
+          console.log('yersd');
           return true;
         } else {
           this.router.navigate(['/unauthorized']);

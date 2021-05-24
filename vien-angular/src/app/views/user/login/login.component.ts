@@ -31,7 +31,13 @@ export class LoginComponent {
         this.buttonState = 'show-spinner';
         this.authService.signIn(this.loginForm.value).subscribe(
           (res) => {
+            console.log(res);
+            /*
+            localStorage.setItem('token', res.token )
+            localStorage.setItem('role', "Usuario" )
+            localStorage.setItem('displayName', "Usuario" )
             this.router.navigate([environment.adminRoot]);
+            */
           },
           (err) => {
             this.buttonDisabled = false;

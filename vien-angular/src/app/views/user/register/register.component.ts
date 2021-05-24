@@ -20,13 +20,16 @@ export class RegisterComponent {
     private router: Router
   ) {}
 
-  onSubmit(): void {
+  async onSubmit() {
     if (this.registerForm.valid && !this.buttonDisabled) {
       this.buttonDisabled = true;
       this.buttonState = 'show-spinner';
-      this.authService.register(this.registerForm.value).subscribe(
-        (user) => {
-          this.router.navigate([environment.adminRoot]);
+      await this.authService.register(this.registerForm.value).subscribe(
+        async (user) => {
+          await localStorage.setItem('token', user.token);
+          await localStorage.setItem('role', user.role);
+          await localStorage.setItem('displayName', user.displayName);
+          await this.router.navigate([environment.adminRoot]);
         },
         (error) => {
           this.notifications.create(

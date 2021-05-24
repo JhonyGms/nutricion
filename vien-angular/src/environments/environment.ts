@@ -8,7 +8,7 @@ export const environment = {
   production: false,
   buyUrl: 'https://1.envato.market/6NV1b',
   SCARF_ANALYTICS: false,
-  adminRoot: '/',
+  adminRoot: '/app',
   apiUrl: 'https://api.coloredstrategies.com',
   defaultMenuType: 'menu-default',
   subHiddenBreakpoint: 1440,

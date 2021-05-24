@@ -23,9 +23,9 @@ let routes: Routes = [
   {
     path: adminRoot,
     loadChildren: () => import('./app/app.module').then((m) => m.AppModule),
-    data: { roles: [UserRole.Admin, UserRole.Editor] },
+    data: { roles: [UserRole.Admin, UserRole.Editor, UserRole.USUARIO] },
     canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
+    //canActivateChild: [AuthGuard],
   },
   {
     path: 'user',
