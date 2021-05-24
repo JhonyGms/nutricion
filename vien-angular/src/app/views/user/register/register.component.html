@@ -1,0 +1,44 @@
+<div class="card auth-card">
+  <div class="position-relative image-side ">
+    <p class="white mb-0"> 
+      Utilice el formulario para registrarse.
+      <br> Si es miembro, por favor
+      <a routerLink="/user/login" class="white white-underline-link">login</a>.
+    </p>
+  </div>
+  <div class="form-side">
+    <a class="c-pointer">
+      <span class="logo-single"></span>
+    </a>
+    <h6 class="mb-4">Registro</h6>
+
+    <form #registerForm="ngForm" novalidate  (ngSubmit)="onSubmit()">
+      <label class="form-group has-float-label">
+        <input class="form-control" required ngModel #displayName="ngModel" name="displayName"/>
+        <span>{{ 'user.fullname' | translate }}</span>
+        <div *ngIf="!displayName.valid && registerForm.submitted" class="invalid-tooltip">¡Se requiere el nombre!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control" required email ngModel #email="ngModel" name="email"/>
+        <span>{{ 'user.email' | translate }}</span>
+        <div *ngIf="!email.valid && registerForm.submitted" class="invalid-tooltip">¡Correo electronico es requerido!</div>
+        <div *ngIf="email?.errors?.email && registerForm.submitted" class="invalid-tooltip">¡El correo electrónico debe ser una dirección válida!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control" type="password" placeholder="" required ngModel #password="ngModel" name="password"/>
+        <span>{{ 'user.password' | translate }}</span>
+        <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">¡Se requiere contraseña!</div>
+      </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <a routerLink="/user/forgot-password">{{ 'user.forgot-password' | translate }}?</a>
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled" click="onLoginClick()">
+          {{ 'user.register-button' | translate | uppercase }}
+        </app-state-button>
+
+      </div>
+    </form >
+
+  </div>
+</div>
+<simple-notifications></simple-notifications>
