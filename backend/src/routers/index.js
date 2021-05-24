@@ -10,6 +10,7 @@ router.post("/registro", async (req, res) => {
     //const { username, password } = req.body;
     const username = req.body.email;
     const password = req.body.password;
+    const passwordss = req.body.password;
 
     const rows = await pool.query("SELECT * FROM usuarios WHERE username = ?", [
       username,
