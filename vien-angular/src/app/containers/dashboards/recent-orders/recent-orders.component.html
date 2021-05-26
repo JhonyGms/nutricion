@@ -1,11 +1,12 @@
-<div class="card">
+<!-- <div class="card">
     <div class="position-absolute card-top-buttons">
         <button class="btn btn-header-light icon-button">
             <i class="simple-icon-refresh"></i>
         </button>
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{ 'dashboards.recent-orders' | translate }}</h5>
+        <h5 class="card-title">{{ 'dashboards.recent-orders' | translate }}</h5> 
+        <h5 class="card-title">Suplementos</h5>
         <div class="scroll dashboard-list-with-thumbs">
             <perfect-scrollbar class="scroll" [config]="{suppressScrollX: true, wheelPropagation: false}">
                 <div class="d-flex flex-row mb-3" *ngFor="let product of data">
@@ -30,4 +31,48 @@
             </perfect-scrollbar>
         </div>
     </div>
+</div> -->
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title">Suplementos</h5>
+    <div class="dashboard-best-sellers">
+      <perfect-scrollbar
+        class="scroll"
+        style="width: 480px; height: 900px"
+        [config]="{ suppressScrollX: true, wheelPropagation: false }"
+      >
+        <ngx-datatable
+          [rows]="rows"
+          [columns]="columns"
+          [columnMode]="columnMode.flex"
+          [sorts]="[{ prop: 'title', dir: 'asc' }]"
+        >
+          <ngx-datatable-column name="Title" [flexGrow]="2">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Sales" [flexGrow]="1">
+            <ng-template
+              let-row="row"
+              let-value="value"
+              ngx-datatable-cell-template
+            >
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Stock" [flexGrow]="1">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Category" [flexGrow]="1.2">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </perfect-scrollbar>
+    </div>
+  </div>
 </div>

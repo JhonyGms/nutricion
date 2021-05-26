@@ -16,9 +16,9 @@ module.exports = {
 module.exports = {
   database: {
     host: "localhost",
-    user: "test_nutricion",
-    password: "fs6X!73j",
-    database: "bd_nutricion",
+    user: "test_nutricion_bd",
+    password: "!4a4xx2Q",
+    database: "bd_nutricion_test",
   },
   webPush: {
     publicKey:

@@ -25,8 +25,8 @@ export interface IPasswordReset {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private URL = 'api.nutricion.testdevdigital.com/api';
-  //private URL = 'http://localhost:3200/api';
+  //private URL = 'api.nutricion.testdevdigital.com/api';
+  private URL = 'http://localhost:3200/api';
 
   constructor(
     private http: HttpClient,
